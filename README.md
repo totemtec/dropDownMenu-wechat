@@ -1,9 +1,10 @@
-# dropDownMenu-wechat
+# dropDownMenu-wechat 支持三级
 
+感谢：https://github.com/ZBK1nger/dropDownMenu-wechat
 
-#### 微信小程序下拉菜单自定义组件
+#### 微信小程序下拉菜单自定义组件，支持三级
 
-* 级联选择器，例如xx区-xx街道
+* 级联选择器，例如xx区-xx街道-xx小区,支持三级
 * 下拉列表，例如排序，筛选等
 
 ![img](https://github.com/ZBK1nger/dropDownMenu-wechat/blob/master/source/Feb-16-2019%2000-49-26.gif)
