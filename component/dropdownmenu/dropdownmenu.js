@@ -33,13 +33,13 @@ Component({
     style_open: false, // 出租 出售
     filteropen: false, // 筛选
     shownavindex: '',
+    dropDownMenuDistrictDataCenter: {},
     dropDownMenuDistrictDataRight: {},
-    dropDownMenuDistrictDataRight2: {},
     district_left_select: '',
+    district_center_select: '',
     district_right_select: '',
-    district_right_select2: '',
+    district_center_select_name: '',
     district_right_select_name: '',
-    district_right_select2_name: '',
     selected_style_id: 0,
     selected_style_name: '',
     selected_source_id: 0,
@@ -137,9 +137,9 @@ Component({
       var selectedId = model.id
       var selectedTitle = model.title;
       this.setData({
-        dropDownMenuDistrictDataRight: model ? model : '',
+        dropDownMenuDistrictDataCenter: model ? model : '',
         district_left_select: selectedId,
-        district_right_select: '',
+        district_center_select: '',
       })
     },
 
@@ -148,33 +148,33 @@ Component({
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
       this.setData({
-        dropDownMenuDistrictDataRight: model ? model : '',
+        dropDownMenuDistrictDataCenter: model ? model : '',
         district_left_select: selectedId,
-        district_right_select: '',
+        district_center_select: '',
 
-        dropDownMenuDistrictDataRight2: '',
-        district_right2_select: '',
+        dropDownMenuDistrictDataRight: '',
+        district_right_select: '',
       })
     },
 
-    selectDistrictRight: function(e) {
+    selectDistrictCenter: function(e) {
       var model = e.target.dataset.model.childModel;
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
       this.setData({
-        dropDownMenuDistrictDataRight2: model ? model : '',
-        district_right_select: selectedId,
-        district_right2_select: '',
+        dropDownMenuDistrictDataRight: model ? model : '',
+        district_center_select: selectedId,
+        district_right_select: '',
       })
     },
 
-    selectDistrictRight2: function(e) {
+    selectDistrictRight: function(e) {
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
       this.closeHyFilter();
       this.setData({
-        district_right2_select: selectedId,
-        district_right2_select_name: selectedTitle
+        district_right_select: selectedId,
+        district_right_select_name: selectedTitle
       })
       this.triggerEvent("selectedItem", {
         index: this.data.shownavindex,
