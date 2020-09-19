@@ -7,7 +7,7 @@
 * 级联选择器，例如xx区-xx街道-xx小区,支持三级
 * 下拉列表，例如排序，筛选等
 
-![img](https://github.com/ZBK1nger/dropDownMenu-wechat/blob/master/source/Feb-16-2019%2000-49-26.gif)
+![img](https://github.com/totemtec/dropDownMenu-wechat/blob/master/source/Feb-16-2019%2000-49-26.gif)
 
 #### 如何使用
 
