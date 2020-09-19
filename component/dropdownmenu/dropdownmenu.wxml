@@ -1,6 +1,6 @@
 <view class="nav">
   <view class="nav-child {{district_open? 'active' : ''}}" bindtap="tapDistrictNav" hidden='{{dropDownMenuDistrictData.length > 0 ? false :true}}' data-nav="1">
-    <view class="nav-title">{{district_right_select_name.length > 0 ?district_right_select_name : dropDownMenuTitle[0]}}</view>
+    <view class="nav-title">{{district_right2_select_name.length > 0 ?district_right2_select_name : dropDownMenuTitle[0]}}</view>
     <view class="icon"></view>
   </view>
   <view class="nav-child borders {{source_open? 'active' : ''}}" bindtap="tapSourceNav" hidden='{{dropDownMenuSourceData.length > 0 ? false : true}}' data-nav="2">
@@ -25,6 +25,11 @@
   </view>
   <view class="half half-right">
     <view class="{{district_right_select == item.id ? 'current_right_select' : ''}}" wx:for="{{dropDownMenuDistrictDataRight}}" bindtap="selectDistrictRight" data-model='{{item}}' wx:key="unique">
+      {{item.title}}
+    </view>
+  </view>
+  <view class="half half-right2">
+    <view class="{{district_right2_select == item.id ? 'current_right2_select' : ''}}" wx:for="{{dropDownMenuDistrictDataRight2}}" bindtap="selectDistrictRight2" data-model='{{item}}' wx:key="unique">
       {{item.title}}
     </view>
   </view>

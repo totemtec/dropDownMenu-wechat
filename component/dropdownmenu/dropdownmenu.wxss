@@ -77,7 +77,7 @@
 .district .half {
   overflow-y: scroll;
   float: left;
-  width: 50%;
+  width: 33%;
   height: 600rpx;
   line-height: 80rpx;
   box-sizing: border-box;
@@ -107,11 +107,24 @@
   border-bottom: 1px solid #f7f7f7;
 }
 
+.half-right2 {
+  background: #fff;
+}
+
+.half-right2 view {
+  border-bottom: 1px solid #f7f7f7;
+}
+
 .current_left_select {
   background: #fff;
 }
 
 .current_right_select {
+  background: #fff;
+  color: #fc6060;
+}
+
+.current_right2_select {
   background: #fff;
   color: #fc6060;
 }

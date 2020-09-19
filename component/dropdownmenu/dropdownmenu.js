@@ -34,9 +34,12 @@ Component({
     filteropen: false, // 筛选
     shownavindex: '',
     dropDownMenuDistrictDataRight: {},
+    dropDownMenuDistrictDataRight2: {},
     district_left_select: '',
     district_right_select: '',
+    district_right_select2: '',
     district_right_select_name: '',
+    district_right_select2_name: '',
     selected_style_id: 0,
     selected_style_name: '',
     selected_source_id: 0,
@@ -148,16 +151,30 @@ Component({
         dropDownMenuDistrictDataRight: model ? model : '',
         district_left_select: selectedId,
         district_right_select: '',
+
+        dropDownMenuDistrictDataRight2: '',
+        district_right2_select: '',
       })
     },
 
     selectDistrictRight: function(e) {
+      var model = e.target.dataset.model.childModel;
+      var selectedId = e.target.dataset.model.id
+      var selectedTitle = e.target.dataset.model.title;
+      this.setData({
+        dropDownMenuDistrictDataRight2: model ? model : '',
+        district_right_select: selectedId,
+        district_right2_select: '',
+      })
+    },
+
+    selectDistrictRight2: function(e) {
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
       this.closeHyFilter();
       this.setData({
-        district_right_select: selectedId,
-        district_right_select_name: selectedTitle
+        district_right2_select: selectedId,
+        district_right2_select_name: selectedTitle
       })
       this.triggerEvent("selectedItem", {
         index: this.data.shownavindex,

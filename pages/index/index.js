@@ -18,11 +18,29 @@ Page({
         title: '道里区',
         childModel: [{
             id: '1-1',
-            title: '中央大街'
+            title: '中央大街',
+            childModel: [{
+              id: '1-1-1',
+              title: '1-1-1'
+            },
+            {
+              id: '1-1-2',
+              title: '1-1-2'
+            }
+          ]
           },
           {
             id: '1-2',
-            title: '埃德蒙顿路'
+            title: '埃德蒙顿路',
+            childModel: [{
+              id: '1-2-1',
+              title: '1-2-1'
+            },
+            {
+              id: '1-2-2',
+              title: '1-2-2'
+            }
+          ]
           }
         ]
       },
