@@ -1,6 +1,6 @@
 <view class="nav">
   <view class="nav-child {{district_open? 'active' : ''}}" bindtap="tapDistrictNav" hidden='{{dropDownMenuDistrictData.length > 0 ? false :true}}' data-nav="1">
-    <view class="nav-title">{{district_right_select_name.length > 0 ?district_right_select_name : dropDownMenuTitle[0]}}</view>
+    <view class="nav-title">{{district_select_name.length > 0 ?district_select_name : dropDownMenuTitle[0]}}</view>
     <view class="icon"></view>
   </view>
   <view class="nav-child borders {{source_open? 'active' : ''}}" bindtap="tapSourceNav" hidden='{{dropDownMenuSourceData.length > 0 ? false : true}}' data-nav="2">

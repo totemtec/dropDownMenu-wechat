@@ -9,7 +9,7 @@ Component({
       value: [],
       observer: function(newVal, oldVal) {
         let model = newVal[0] ? newVal[0] : null
-        this.selectDefaltDistrictLeft(model)
+        this.selectDefaultDistrictLeft(model)
       }
     },
 
@@ -35,11 +35,12 @@ Component({
     shownavindex: '',
     dropDownMenuDistrictDataCenter: {},
     dropDownMenuDistrictDataRight: {},
+
     district_left_select: '',
     district_center_select: '',
     district_right_select: '',
-    district_center_select_name: '',
-    district_right_select_name: '',
+    district_select_name: '',
+
     selected_style_id: 0,
     selected_style_name: '',
     selected_source_id: 0,
@@ -129,7 +130,7 @@ Component({
     },
 
 
-    selectDefaltDistrictLeft(model) {
+    selectDefaultDistrictLeft(model) {
       if (!model) {
         return
       }
@@ -143,44 +144,94 @@ Component({
       })
     },
 
-    selectDistrictLeft: function(e) {
-      var model = e.target.dataset.model.childModel;
-      var selectedId = e.target.dataset.model.id
-      var selectedTitle = e.target.dataset.model.title;
+    closeWithSelectObject: function(value) {
+      this.closeHyFilter();
+      this.triggerEvent("selectedItem", value);
       this.setData({
-        dropDownMenuDistrictDataCenter: model ? model : '',
-        district_left_select: selectedId,
-        district_center_select: '',
-
-        dropDownMenuDistrictDataRight: '',
-        district_right_select: '',
-      })
+        district_select_name: value.selectedTitle
+      });
     },
 
-    selectDistrictCenter: function(e) {
-      var model = e.target.dataset.model.childModel;
+    selectDistrictLeft: function(e) {
+      var childModel = e.target.dataset.model.childModel;
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
-      this.setData({
-        dropDownMenuDistrictDataRight: model ? model : '',
-        district_center_select: selectedId,
-        district_right_select: '',
-      })
+      var selectedLevel = e.target.dataset.model.level;
+
+      if(childModel)
+      {
+        this.setData({
+          dropDownMenuDistrictDataCenter: childModel,
+          district_left_select: selectedId,
+          district_center_select: '',
+  
+          dropDownMenuDistrictDataRight: '',
+          district_right_select: '',
+        })
+      }
+      else
+      {
+        this.setData({
+          district_left_select: selectedId,
+          dropDownMenuDistrictDataCenter: '',
+          dropDownMenuDistrictDataRight: '',
+        })
+
+        this.closeWithSelectObject({
+          index: this.data.shownavindex,
+          selectedId: selectedId,
+          selectedTitle: selectedTitle,
+          selectedLevel: selectedLevel,
+        });
+      }      
+    },
+
+
+
+    selectDistrictCenter: function(e) {
+      var childModel = e.target.dataset.model.childModel;
+      var selectedId = e.target.dataset.model.id
+      var selectedTitle = e.target.dataset.model.title;
+      var selectedLevel = e.target.dataset.model.level;
+      if(childModel)
+      {
+        this.setData({
+          dropDownMenuDistrictDataRight: childModel,
+          district_center_select: selectedId,
+          district_right_select: '',
+        })
+      }
+      else 
+      {
+        this.setData({
+          district_center_select: selectedId,
+        })
+
+        this.closeWithSelectObject({
+          index: this.data.shownavindex,
+          selectedId: selectedId,
+          selectedTitle: selectedTitle,
+          selectedLevel: selectedLevel,
+        });
+      }
     },
 
     selectDistrictRight: function(e) {
       var selectedId = e.target.dataset.model.id
       var selectedTitle = e.target.dataset.model.title;
-      this.closeHyFilter();
+      var selectedLevel = e.target.dataset.model.level;
+     
       this.setData({
         district_right_select: selectedId,
         district_right_select_name: selectedTitle
       })
-      this.triggerEvent("selectedItem", {
+
+      this.closeWithSelectObject({
         index: this.data.shownavindex,
         selectedId: selectedId,
-        selectedTitle: selectedTitle
-      })
+        selectedTitle: selectedTitle,
+        selectedLevel: selectedLevel,
+      });
     },
 
     selectSourceItem: function(e) {
