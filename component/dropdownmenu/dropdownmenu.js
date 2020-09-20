@@ -134,30 +134,33 @@ Component({
       if (!model) {
         return
       }
-      var model = model.childModel;
+      var childModel = model.childModel;
       var selectedId = model.id
       var selectedTitle = model.title;
-      this.setData({
-        dropDownMenuDistrictDataCenter: model ? model : '',
-        district_left_select: selectedId,
-        district_center_select: '',
-      })
+      if (childModel)
+      {
+        this.setData({
+          dropDownMenuDistrictDataCenter: childModel,
+          district_left_select: selectedId,
+          district_center_select: '',
+        })
+      }
     },
 
-    closeWithSelectObject: function(value) {
+    closeWithSelectObject: function(data) {
       this.closeHyFilter();
-      this.triggerEvent("selectedItem", value);
+      this.triggerEvent("selectedItem", data.value);
+      let alias = data.value.alias;
+      let title = data.value.title;
+      if(alias) title = alias;
       this.setData({
-        district_select_name: value.selectedTitle
+        district_select_name: title
       });
     },
 
     selectDistrictLeft: function(e) {
-      var childModel = e.target.dataset.model.childModel;
-      var selectedId = e.target.dataset.model.id
-      var selectedTitle = e.target.dataset.model.title;
-      var selectedLevel = e.target.dataset.model.level;
-
+      let childModel = e.target.dataset.model.childModel;
+      let selectedId = e.target.dataset.model.id;
       if(childModel)
       {
         this.setData({
@@ -179,9 +182,7 @@ Component({
 
         this.closeWithSelectObject({
           index: this.data.shownavindex,
-          selectedId: selectedId,
-          selectedTitle: selectedTitle,
-          selectedLevel: selectedLevel,
+          value: e.target.dataset.model,
         });
       }      
     },
@@ -189,10 +190,8 @@ Component({
 
 
     selectDistrictCenter: function(e) {
-      var childModel = e.target.dataset.model.childModel;
-      var selectedId = e.target.dataset.model.id
-      var selectedTitle = e.target.dataset.model.title;
-      var selectedLevel = e.target.dataset.model.level;
+      let childModel = e.target.dataset.model.childModel;
+      let selectedId = e.target.dataset.model.id
       if(childModel)
       {
         this.setData({
@@ -209,28 +208,20 @@ Component({
 
         this.closeWithSelectObject({
           index: this.data.shownavindex,
-          selectedId: selectedId,
-          selectedTitle: selectedTitle,
-          selectedLevel: selectedLevel,
+          value: e.target.dataset.model,
         });
       }
     },
 
     selectDistrictRight: function(e) {
-      var selectedId = e.target.dataset.model.id
-      var selectedTitle = e.target.dataset.model.title;
-      var selectedLevel = e.target.dataset.model.level;
-     
+      let selectedId = e.target.dataset.model.id
       this.setData({
-        district_right_select: selectedId,
-        district_right_select_name: selectedTitle
+        district_right_select: selectedId
       })
 
       this.closeWithSelectObject({
         index: this.data.shownavindex,
-        selectedId: selectedId,
-        selectedTitle: selectedTitle,
-        selectedLevel: selectedLevel,
+        value: e.target.dataset.model,
       });
     },
 
